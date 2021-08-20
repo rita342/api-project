@@ -143,21 +143,16 @@
                     const content = document.querySelector(".card-columns");
                     content.innerHTML = "";
                     data.forEach((product) => {
-                        content.innerHTML += `
-                        <div class="card" style="width: ">
-  <img class="card-img-top" src="https://www.greenqueen.com.hk/wp-content/uploads/2020/09/My-Octopus-Teacher-Best-Climate-Documentary-.jpg" alt="Card image cap">
+                        content.innerHTML += `<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${product.imageurl}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title"><strong>${product.name}</strong></h5>
-    <p class="card-text">${product.description}</p>
+    <h5 class="card-title"></h5>
+    <p class="card-text" style="font-size:8px">${product.description}</p>
+    <a href="#" class="btn btn-primary">delete</a>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${product.category}</li>
-    <li class="list-group-item"><button type="submit" class="btn btn-primary"><a class="nav-link" href="./index9.html" style="color:white">edit</a></button></li>
-    <li class="list-group-item"> <button type="submit" class="btn btn-primary"><a class="nav-link" href="./index9.html" style="color:white">delete</a></button></li>
-   
-   
-  </ul> <div class="card" style="width:">
-                     `;
+<h1>${product.category}</h1>
+                           
+   `;
                     });
                 }
             });
