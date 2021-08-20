@@ -144,15 +144,14 @@
                     content.innerHTML = "";
                     data.forEach((product) => {
                         content.innerHTML += `<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${product.imageurl}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text" style="font-size:8px">${product.description}</p>
-    <a href="#" class="btn btn-primary">delete</a>
-  </div>
-<h1>${product.category}</h1>
-                           
-   `;
+                       <img class="card-img-top" src="${product.imageurl}" alt="Card image cap">
+                       <div class="card-body">
+                          <h5 class="card-title"></h5>
+                          <p class="card-text" style="font-size:8px">${product.description}</p>
+                            <a href="#" class="btn btn-primary">delete</a>
+                            </div>
+                        <h1>${product.category}</h1>
+                            `;
                     });
                 }
             });
