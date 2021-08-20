@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Backoffice</title>
+    <style>
+        .topnav {
+            background-color: rgb(19, 15, 15);
+            overflow: hidden;
+            height: 50px;
+            width: 100%;
+            margin-left: 0px;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 16px 17px;
+            text-decoration: none;
+            font-size: 15px;
+            margin-right: 0%;
+        }
+        
+        .topnav img {
+            margin-top: -15px;
+        }
+        
+        .topnav a:hover {
+            background-color: rgb(167, 166, 166);
+            color: black;
+        }
+        
+        .topnav a.active {
+            background-color: #141414;
+            color: rgb(230, 223, 223);
+        }
+        
+        .topnav .icon {
+            display: none;
+        }
+        
+        lable {
+            color: white
+        }
+        
+        body {
+            background-color: black
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active">
+            <img src="https://midiaresearch.com/storage/uploads/blog/featured/1177/cover_image-1594998634.png" alt="Netflix" width="112" height="60">
+            <a href="#news">Home</a>
+            <a href="#contact">Tv Show</a>
+            <a href="#about">Movies</a>
+            <a href="#about">Recently Added</a>
+            <a href="#about">My List</a>
+            <a href="#about">Kids</a>
+            <img src="data:image/png;base64," alt="Netflix" style="margin-left: 350px;width:20px;margin-top: 10px;height:20px;">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mt-5 mb-3"> <img src="https://assets.brand.microsites.netflix.io/assets/493f5bba-81a4-11e9-bf79-066b49664af6_cm_1440w.png?v=30" alt="Netflix" style="margin-left: 0px;width:200px;margin-top: 10px;height:70px;"></h2>
+
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name" style="color: #f2f2f2;">name</label>
+                        <input id="name" type="text" class="form-control" aria-describedby="name field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" style="color: #f2f2f2;">category</label>
+                        <input id="category" type="text" class="form-control" aria-describedby="name field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" style="color: #f2f2f2;">description</label>
+                        <input id="description" type="text" class="form-control" aria-describedby="name field" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="imageUrl" style="color: #f2f2f2;">Image URL</label>
+                        <input required class="form-control" id="imageUrl" value="http://placehold.it/300x400" placeholder="http://placehold.it/300x400" />
+                    </div>
+                    <button type="submit" class="btn btn-primary"><a class="nav-link" href="./index9.html" style="color:white">Submit</a></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <script>
+        const handleSubmit = async(event) => {
+            event.preventDefault()
+
+
+            const url = " https://strive-school-testing-apis.herokuapp.com/api/movies/drama"
+
+            const myEvent = {
+                name: document.getElementById("name").value,
+                category: document.getElementById("category").value,
+
+                description: document.getElementById("description").value,
+                imageUrl: document.getElementById("imageUrl").value,
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(myEvent),
+                    headers: {
+                        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFjZTBiMTJkNTI2MjAwMTViNmRjOGQiLCJpYXQiOjE2MjkyODI0ODEsImV4cCI6MTYzMDQ5MjA4MX0.KFzMXEuZKdknd6L7prl-dQh0EjsTHj4Dx-MfEdGaUuo",
+                        "Content-Type": "application/json",
+                    },
+                })
+
+                if (response.ok) {
+                    const respEvent = await response.json()
+
+                }
+
+                console.log("no exception was thrown")
+
+            } catch (err) {
+                alert(err.message)
+
+
+                console.log("last thing")
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
